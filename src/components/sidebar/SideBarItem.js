@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import styles from "./SideBar.module.css";
 
-const SideBarItem = () =>{
+const SideBarItem = (props) =>{
 
     const [isOpen, setIsOpen] = useState(false);
     const [height, setHeight] = useState("35px");
@@ -27,7 +27,7 @@ const SideBarItem = () =>{
         }
         setIsOpen(!isOpen);
     }}>
-        <a class="active" href="#home">Users</a></li>
+        <a class="active" href="#home">{props.title}</a></li>
      </>
      );
 };
