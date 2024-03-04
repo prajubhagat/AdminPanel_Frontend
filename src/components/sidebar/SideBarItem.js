@@ -1,5 +1,6 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import styles from "./SideBar.module.css";
+import { Link } from "react-router-dom";
 
 const SideBarItem = (props) =>{
 
@@ -14,6 +15,10 @@ const SideBarItem = (props) =>{
         setHeight('35px');
     };
 
+    useEffect(() => {
+        console.log(`index ${props.index} closeItem = ${props.closeItem}`);
+    }, [props.closeItem]);
+
     return (
     <>
      <li className={`${styles["li-aside"]} ${styles["li-aside-item"]}`} 
@@ -24,10 +29,14 @@ const SideBarItem = (props) =>{
             collapseItem();
         } else {
             expandItem();
+            props.closeOtherItem(props.index);
         }
         setIsOpen(!isOpen);
-    }}>
-        <a class="active" href="#home">{props.title}</a></li>
+    }}
+    >
+        <Link to={props.path}>{props.title}</Link>
+        {/* <a class="active" href="#home">{props.title}</a> */}
+        </li>
      </>
      );
 };
