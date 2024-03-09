@@ -8,7 +8,7 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 
 const Header = () => {
   return (
-    <Navbar bg="dark" data-bs-theme="dark">
+    <Navbar bg="dark" data-bs-theme="dark" responsive>
     <Container>
       <Navbar.Brand href="#home">Navbar</Navbar.Brand>
       <Nav className="me-auto">
