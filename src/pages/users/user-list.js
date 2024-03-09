@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import styles from "./user-list.module.css";
 import { Link } from "react-router-dom";
+import Table from 'react-bootstrap/Table';
+import Button from 'react-bootstrap/Button';
 
 
 const UserList = () => {
@@ -24,8 +26,9 @@ const UserList = () => {
             <h1>I am user List</h1>
             <Link to="/new-user">New User</Link>
             {/* use this styles for responsive table */}
-            <div style={{overflowX:'auto'}}> 
-            <table>
+            
+            <Table striped bordered hover variant="dark" responsive>
+            <thead>
                 <tr>
                     <th>ID</th>
                     <th>UserName</th>
@@ -38,6 +41,8 @@ const UserList = () => {
                     <th>Edit</th>
                     <th>Delete</th>
                 </tr>
+                </thead>
+                <tbody>
                 {users.map((user)=>{
                     return <tr>
                         <td>{user.id}</td>
@@ -51,7 +56,9 @@ const UserList = () => {
                         <td>{user.created}</td>
                         <td>{user.modified}</td>
                         <td><Link to={`/edit-user?id=${user.id}`}>Edit User</Link></td>
-                        <td><button onClick={async () => {
+
+                        <td><Button variant="primary"
+                        onClick={async () => {
                             console.log(user.id);
                             const requestOptions = {
                                 method: 'DELETE',
@@ -67,13 +74,13 @@ const UserList = () => {
                              //again load all data from backend
                              loadData(); 
                         }}
-                        >Delete</button></td>
+                        >Delete</Button></td>
                        
                         </tr>
                 })}
-                <tr></tr>
-            </table>
-            </div>
+               </tbody>
+            </Table>
+           
         </>
     );
 };

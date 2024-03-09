@@ -11,10 +11,7 @@ function App() {
     <div className="App">
       <SideBar/>
     
-      <div className="SideContent" style={{width:"calc(100% - 150px)"}} >
-      <Header />
-      <MainContent/>
-      </div>
+      
     </div>
     </BrowserRouter>
   );
