@@ -45,7 +45,7 @@ const UserList = () => {
                 <tbody>
                 {users.map((user)=>{
                     return <tr>
-                        <td>{user.id}</td>
+                        <td>{user._id}</td>
                         <td>{user.username}</td>
                         <td>{user.password}</td>
                         <td>{user.email}</td>
@@ -55,17 +55,17 @@ const UserList = () => {
                         {/* <td>{new Date(user.created).toDateString()}</td> */}
                         <td>{user.created}</td>
                         <td>{user.modified}</td>
-                        <td><Link to={`/edit-user?id=${user.id}`}>Edit User</Link></td>
+                        <td><Link to={`/edit-user?id=${user._id}`}>Edit User</Link></td>
 
                         <td><Button variant="primary"
                         onClick={async () => {
-                            console.log(user.id);
+                            console.log(user._id);
                             const requestOptions = {
                                 method: 'DELETE',
                                 headers: { 'Content-Type': 'application/json' },
                             };
             
-                            const response = await fetch(`http://localhost:3001/users/${user.id}`,
+                            const response = await fetch(`http://localhost:3001/users/${user._id}`,
                              requestOptions);
 
                              const responseJSON = await response.json();
