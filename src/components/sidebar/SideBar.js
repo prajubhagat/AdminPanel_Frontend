@@ -66,12 +66,12 @@ const SideBar =() => {
               <CDBSidebarMenuItem icon="user">Users</CDBSidebarMenuItem>
             </NavLink>
 
-            <NavLink exact to="/product-list" activeClassName="activeClicked">
-              <CDBSidebarMenuItem icon="table">Products</CDBSidebarMenuItem>
+            <NavLink exact to="/rooms-list" activeClassName="activeClicked">
+              <CDBSidebarMenuItem icon="table">Rooms</CDBSidebarMenuItem>
             </NavLink>
 
-            <NavLink exact to="/cart-list" activeClassName="activeClicked">
-              <CDBSidebarMenuItem icon="chart-line">Carts</CDBSidebarMenuItem>
+            <NavLink exact to="/booking-list" activeClassName="activeClicked">
+              <CDBSidebarMenuItem icon="chart-line">Booking</CDBSidebarMenuItem>
             </NavLink>
 
             <NavLink exact to="/hero404" target="_blank" activeClassName="activeClicked">

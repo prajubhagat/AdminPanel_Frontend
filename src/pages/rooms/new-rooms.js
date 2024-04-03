@@ -1,7 +1,7 @@
 import React from "react";
 
 
-const NewProduct = () => {
+const NewRooms = () => {
     return (
         <>
             <h1>I am new Product</h1>
@@ -9,4 +9,4 @@ const NewProduct = () => {
     );
 };
 
-export default NewProduct;
+export default NewRooms;

@@ -15,27 +15,29 @@ const EditUser = () => {
   const id = searchParams.get("id");
 
     useEffect(()=>{
+        console.log("FirstName="+ firstName);
+        console.log("LastName="+ lastName);
         console.log("UserName ="+ username);
         console.log("Password="+ password);
         console.log("Email ="+ email);
-        console.log("FirstName="+ firstName);
-        console.log("LastName="+ lastName);
+       
 
 
         fetchUser();
     }, []);
 
     const fetchUser = async () =>{
-        const response = await fetch(`http://localhost:3001/users/${id}`);
+        const response = await fetch(`http://localhost:3002/users/${id}`);
 
         const responseJSON = await response.json();
 
         console.log("user is" , responseJSON);
+        setFirstName(responseJSON.first_name);
+        setLastName(responseJSON.last_name);
         setUserName(responseJSON.username);
         setPassword(responseJSON.password);
         setEmail(responseJSON.email);
-        setFirstName(responseJSON.first_name);
-        setLastName(responseJSON.last_name);
+       
     };
 
 
@@ -63,7 +65,7 @@ const EditUser = () => {
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(data),
                 };
-                const response = await fetch(`http://localhost:3001/users/${id}`,
+                const response = await fetch(`http://localhost:3002/users/${id}`,
                  requestOptions);
                    
                 const responseJSON = await response.json();

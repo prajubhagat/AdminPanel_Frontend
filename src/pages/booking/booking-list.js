@@ -1,7 +1,7 @@
 import React from "react";
 
 
-const CartList = () => {
+const BookingList = () => {
     return (
         <>
             <h1>I am Cart List</h1>
@@ -9,4 +9,4 @@ const CartList = () => {
     );
 };
 
-export default CartList;
+export default BookingList;

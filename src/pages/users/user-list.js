@@ -13,7 +13,7 @@ const UserList = () => {
     }, []);
 
     const loadData = async () => {
-        const response = await fetch('http://localhost:3001/users');
+        const response = await fetch('http://localhost:3002/users');
 
         const responseJSON = await response.json();
 
@@ -31,13 +31,16 @@ const UserList = () => {
             <thead>
                 <tr>
                     <th>ID</th>
-                    <th>UserName</th>
-                    <th>Password</th>
-                    <th>Email</th>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                    <th>Created</th>
-                    <th>Modified</th> 
+                    <th>first_name</th>
+                    <th>last_name</th>
+                    <th>username</th>
+                    <th>password</th>
+                    <th>age</th>
+                    <th>identity_proof_number</th>
+                    <th>identity_proof_type</th> 
+                    <th>mobile</th>
+                    <th>address</th>
+                    <th>email</th>
                     <th>Edit</th>
                     <th>Delete</th>
                 </tr>
@@ -46,15 +49,20 @@ const UserList = () => {
                 {users.map((user)=>{
                     return <tr>
                         <td>{user._id}</td>
-                        <td>{user.username}</td>
-                        <td>{user.password}</td>
-                        <td>{user.email}</td>
                         <td>{user.first_name}</td>
                         <td>{user.last_name}</td>
+                        <td>{user.username}</td>
+                        <td>{user.password}</td>
+                        <td>{user.age}</td>
+                        <td>{user.identity_proof_number}</td>
+                        <td>{user.identity_proof_type}</td>
+                        <td>{user.mobile}</td>
+                        <td>{user.address}</td>
+                        <td>{user.email}</td>
+                        
                         {/* <td>{(new Date("" + user.created)).toDateString()}</td> */}
                         {/* <td>{new Date(user.created).toDateString()}</td> */}
-                        <td>{user.created}</td>
-                        <td>{user.modified}</td>
+            
                         <td><Link to={`/edit-user?id=${user._id}`}>Edit User</Link></td>
 
                         <td><Button variant="primary"
@@ -65,7 +73,7 @@ const UserList = () => {
                                 headers: { 'Content-Type': 'application/json' },
                             };
             
-                            const response = await fetch(`http://localhost:3001/users/${user._id}`,
+                            const response = await fetch(`http://localhost:3002/users/${user._id}`,
                              requestOptions);
 
                              const responseJSON = await response.json();
