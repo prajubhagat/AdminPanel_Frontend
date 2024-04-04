@@ -83,6 +83,7 @@ const UserList = () => {
                              loadData(); 
                         }}
                         >Delete</Button></td>
+                        
                        
                         </tr>
                 })}

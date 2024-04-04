@@ -7,12 +7,13 @@ const NewUser = () => {
     const [lastName, setLastName] = useState("");
     const [username, setUserName] = useState("");
     const [password, setPassword] = useState("");
-    const [email, setEmail] = useState("");
+   
     const [age, setAge]=useState("");
     const [identity_proof_number, setIdentity_proof_number]=useState("");
     const [identity_proof_type, setIdentity_proof_type]=useState("");
     const [mobile, setMobile]=useState("");
     const [address, setAddress]=useState("");
+    const [email, setEmail] = useState("");
 
     
 
