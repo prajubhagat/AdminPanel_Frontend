@@ -140,7 +140,7 @@ const NewBooking = () => {
                             setUser_id(event.target.value);
                         }}/><br/>
 
-                        <label for="user">user_id : </label>
+                        <label for="user">user : </label>
                         <input  id="user" name="user" type="text" 
                          onChange={(event)=>{
                             setUser(event.target.value);

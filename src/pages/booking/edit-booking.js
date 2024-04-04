@@ -162,7 +162,7 @@ const EditBooking = () => {
                             setUser_id(event.target.value);
                         }}/><br/>
 
-                        <label for="user">user_id : </label>
+                        <label for="user">user : </label>
                         <input  id="user" name="user" type="text" value= {user}
                          onChange={(event)=>{
                             setUser(event.target.value);
@@ -180,7 +180,7 @@ const EditBooking = () => {
                             setAdults(event.target.value);
                         }}/><br/>
                        
-                        <label for="kids">adults : </label>
+                        <label for="kids">kids : </label>
                         <input  id="kids" name="kids" type="text" value= {kids}
                          onChange={(event)=>{
                             setKids(event.target.value);
