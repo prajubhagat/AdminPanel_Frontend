@@ -8,10 +8,12 @@ const NewRooms = () => {
         const [discounted_price, setDiscounted_price] = useState("");
         const [bed_details, setBed_details] = useState("");
        
-        const [amenties, setAmenties]=useState("");
+        const [amenties, setAmenties]=useState([]);
         const [person_capacity, setPerson_capacity]=useState("");
         const [photos, setPhotos]=useState("");
         const [thumbnail, setThumbnail]=useState("");
+
+        const [selectedAmenties , setSelectedAmenties]=useState([]);
        
     
         
@@ -27,8 +29,22 @@ const NewRooms = () => {
             console.log("thumbnail="+ thumbnail);
            
            
+           
     
         }, [name, price_per_day, discounted_price, bed_details,amenties , person_capacity, photos, thumbnail]);
+
+        useEffect(()=>{
+            fetchAmenities();
+        },[]);
+
+        const fetchAmenities = async () =>{
+            const response = await fetch(`http://localhost:3002/amenties`);
+    
+            const responseJSON = await response.json();
+            console.log("Response", responseJSON);
+            setAmenties(responseJSON);
+           
+        };
     
     
         return (
@@ -51,7 +67,7 @@ const NewRooms = () => {
                         price_per_day:price_per_day,
                         discounted_price:discounted_price,
                         bed_details:bed_details,
-                        amenties:amenties,
+                        amenties:selectedAmenties,
                         person_capacity:person_capacity,
                         photos: photos,
                         thumbnail:thumbnail,
@@ -70,7 +86,7 @@ const NewRooms = () => {
                     const responseJSON = await response.json();
                     console.log("data entered", responseJSON);
                     // for redirectCode mean same data submit again
-                    window.location.replace('http://localhost:3002/rooms-list');
+                    window.location.replace('http://localhost:3000/rooms-list');
                 }}>
                       <label for="name"> Name :</label>
                     <input id="name" name="name" type="text"
@@ -97,11 +113,30 @@ const NewRooms = () => {
                     }} /><br/>
     
     
-                    <label for="amenties">amenties : </label>
-                    <input  id="amenties" name="amenties" type="number" 
-                     onChange={(event)=>{
-                        setAmenties(event.target.value);
-                    }}/><br/>
+                    <label for="amenties">selectedAmenties</label>
+                    <select name="amenties" id="amenties" multiple onChange={event=>{
+                        // console.log(event.target.options);
+                        var options = event.target.options;
+
+                        var value=[];
+
+                        var tempselectedAmenties =[]
+                        for (var i=0, l = options.length; i <l; i++) {
+                            console.log('option'+ i , options[i].selected);
+                            if (options[i].selected){
+                                value.push(options[i].value);
+                                tempselectedAmenties.push(amenties[i])
+
+                            }
+                        }
+                        setSelectedAmenties(tempselectedAmenties);
+                        console.log("selected value =" , value);
+                    }}>
+                        {amenties.map(amenity=>{
+                            return <option value={amenity._id }>{amenity.name}</option>
+                        })}
+                        </select> <br/>
+
     
                     <label for="person_capacity">person_capacity : </label>
                     <input  id="person_capacity" name="person_capacity" type="number" 
@@ -120,6 +155,7 @@ const NewRooms = () => {
                      onChange={(event)=>{
                         setThumbnail(event.target.value);
                     }}/><br/>
+
     
                    
     

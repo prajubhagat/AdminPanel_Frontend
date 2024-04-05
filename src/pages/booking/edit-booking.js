@@ -66,7 +66,7 @@ const EditBooking = () => {
     
         return (
             <>
-                <h1>I am new room</h1>
+                <h1>I am new Booking</h1>
                 <form onSubmit={async(event)=>{
                     event.preventDefault();
                     console.log("star_date="+ star_date);

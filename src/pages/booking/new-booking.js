@@ -86,7 +86,7 @@ const NewBooking = () => {
                         const responseJSON = await response.json();
                         console.log("data entered", responseJSON);
                         // for redirectCode mean same data submit again
-                        window.location.replace('http://localhost:3002/booking-list');
+                        window.location.replace('http://localhost:3000/booking-list');
                     }}>
                          <label for="star_date"> star_date : </label>
                     <input id="star_date" 

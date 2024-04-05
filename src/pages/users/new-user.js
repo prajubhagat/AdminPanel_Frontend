@@ -76,7 +76,7 @@ const NewUser = () => {
                 const responseJSON = await response.json();
                 console.log("data entered", responseJSON);
                 // for redirectCode mean same data submit again
-                window.location.replace('http://localhost:3002/user-list');
+                window.location.replace('http://localhost:3000/user-list');
             }}>
                   <label for="first_name">First Name :</label>
                 <input id="first_name" name="first_name" type="text"
