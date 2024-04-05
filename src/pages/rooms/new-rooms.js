@@ -132,8 +132,8 @@ const NewRooms = () => {
                         setSelectedAmenties(tempselectedAmenties);
                         console.log("selected value =" , value);
                     }}>
-                        {amenties.map(amenity=>{
-                            return <option value={amenity._id }>{amenity.name}</option>
+                        {amenties.map(amenties=>{
+                            return <option value={amenties._id }>{amenties.name}</option>
                         })}
                         </select> <br/>
 
