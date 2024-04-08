@@ -11,6 +11,9 @@ import NewRooms from "../pages/rooms/new-rooms";
 import BookingList from "../pages/booking/booking-list";
 import NewBooking from "../pages/booking/new-booking";
 import EditBooking from "../pages/booking/edit-booking";
+import PhotosList from "../pages/photos/photos-list";
+import NewPhotos from "../pages/photos/new-photos";
+import EditPhotos from "../pages/photos/edit-photos";
 
 
 const MainContent =() => {
@@ -33,6 +36,11 @@ const MainContent =() => {
                 <Route path="new-booking" element={<NewBooking/>} />
                 <Route path="edit-booking" element={<EditBooking />} />
                 <Route path="booking-list" element={<BookingList />} />
+
+                <Route index element={<PhotosList/>} />
+                <Route path="new-photos" element={<NewPhotos/>} />
+                <Route path="edit-photos" element={<EditPhotos />} />
+                <Route path="photos-list" element={<PhotosList />} />
 
                 {/* <Route path="new-product" element={<NewProduct />} />
                 <Route path="edit-product" element={<EditProduct />} />

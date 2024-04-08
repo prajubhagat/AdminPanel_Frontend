@@ -75,6 +75,10 @@ const SideBar =() => {
               <CDBSidebarMenuItem icon="table">Rooms</CDBSidebarMenuItem>
             </NavLink>
 
+            <NavLink exact to="/photos-list" activeClassName="activeClicked">
+              <CDBSidebarMenuItem icon="table">Photos</CDBSidebarMenuItem>
+            </NavLink>
+
             <NavLink exact to="/hero404" target="_blank" activeClassName="activeClicked">
               <CDBSidebarMenuItem icon="exclamation-circle">404 page</CDBSidebarMenuItem>
             </NavLink>

@@ -10,7 +10,7 @@ const NewRooms = () => {
        
         const [amenties, setAmenties]=useState([]);
         const [person_capacity, setPerson_capacity]=useState("");
-        const [photos, setPhotos]=useState("");
+        const [photos, setPhotos]=useState([]);
         const [thumbnail, setThumbnail]=useState("");
 
         const [selectedAmenties , setSelectedAmenties]=useState([]);
@@ -75,13 +75,15 @@ const NewRooms = () => {
                     };
     
                     const requestOptions = {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
                         body: JSON.stringify(data),
-                    };
-    
-                    const response = await fetch('http://localhost:3002/rooms',
-                     requestOptions);
+                      };
+            
+                      const response = await fetch(
+                        "http://localhost:3002/rooms",
+                        requestOptions
+                      );
                        
                     const responseJSON = await response.json();
                     console.log("data entered", responseJSON);
@@ -92,7 +94,8 @@ const NewRooms = () => {
                     <input id="name" name="name" type="text"
                      onChange={(event)=>{
                         setName(event.target.value);
-                    }} /><br/>
+                    }} />{""}
+                    <br/>
     
                     <label for="price_per_day">Price_per_day : </label>
                     <input id="price_per_day" name="price_per_day" type="text"
@@ -113,26 +116,25 @@ const NewRooms = () => {
                     }} /><br/>
     
     
-                    <label for="amenties">selectedAmenties</label>
+                    <label for="amenties">Amenties :</label>
                     <select name="amenties" id="amenties" multiple onChange={event=>{
                         // console.log(event.target.options);
                         var options = event.target.options;
 
                         var value=[];
 
-                        var tempselectedAmenties =[]
-                        for (var i=0, l = options.length; i <l; i++) {
+                        var tempselectedAmenties =[];
+                        for (var i=0, l = options.length; i < l; i++) {
                             console.log('option'+ i , options[i].selected);
                             if (options[i].selected){
                                 value.push(options[i].value);
-                                tempselectedAmenties.push(amenties[i])
-
+                                tempselectedAmenties.push(amenties[i]);
                             }
                         }
                         setSelectedAmenties(tempselectedAmenties);
                         console.log("selected value =" , value);
                     }}>
-                        {amenties.map(amenity=>{
+                        {amenties.map((amenity)=>{
                             return <option value={amenity._id}>{amenity.name}</option>
                         })}
                         </select> <br/>
@@ -144,11 +146,30 @@ const NewRooms = () => {
                         setPerson_capacity(event.target.value);
                     }}/><br/>
     
-                     <label for="photos">photos : </label>
-                    <input  id="photos" name="photos" type="text" 
-                     onChange={(event)=>{
-                        setPhotos(event.target.value);
-                    }}/><br/>
+                        {/* {photos.map(photo=>{
+                            return <img src={photo.image_data} width={100} height={100}/>
+                        })} */}
+
+                         <label for="photos">image : </label>
+                            <input  type="file" id="file" name="avatar" accept = "jpef, .png, .jpg" 
+                            onChange={(e)=>{
+                                    e.preventDefault();
+                                    const reader = new FileReader();
+                                    const file = e.target.files[0];
+                                    console.log("reader",reader)
+                                    console.log("file", file)
+                                    if (reader !== undefined && file !== undefined) {
+                                        reader.onloadend=() =>{
+                            
+                                            console.log(reader.result);
+                                            setPhotos(reader.result);
+                                            // setPhotos(reader.result);
+                                            console.log("I am here");
+                                        }
+                                        reader.readAsDataURL(file);
+                                    }
+                                
+                                  }} /><br/>
     
                     <label for="thumbnail">thumbnail : </label>
                     <input  id="thumbnail" name="thumbnail" type="text" 

@@ -51,9 +51,11 @@ const RoomsList = () => {
                         <td>{room.price_per_day}</td>
                         <td>{room.discounted_price}</td>
                         <td>{room.bed_details}</td>
-                        <td>{room.amenties}</td>
+                        <td>{room.amenties.map((amentie)=>{
+                            return <option value ={amentie._id}>{amentie.name}</option>
+                        })}</td>
                         <td>{room.person_capacity}</td>
-                        <td>{room.photos}</td>
+                        <td><img src={rooms.photos} width={100} height={100}></img></td>
                         <td>{room.thumbnail}</td>
                         
                         

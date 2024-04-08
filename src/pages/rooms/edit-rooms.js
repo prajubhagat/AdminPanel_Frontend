@@ -89,7 +89,7 @@ const Editrooms = () => {
                    
                 const responseJSON = await response.json();
                 console.log("data entered", responseJSON);
-                window.location.replace("http://localhost:3002/rooms-list");
+                window.location.replace("http://localhost:3000/rooms-list");
             }}>
                  <label for="name"> Name : </label>
                 <input id="name" 
@@ -131,11 +131,32 @@ const Editrooms = () => {
                         setPerson_capacity(event.target.value);
                     }}/><br/>
     
-                     <label for="photos">photos : </label>
-                    <input  id="photos" name="photos" type="text" value= {photos}
-                     onChange={(event)=>{
-                        setPhotos(event.target.value);
-                    }}/><br/>
+                {photos.map(photo=>{
+                     return <img src={photo.image_data} width={100} height = {100}/>
+                })}
+
+                    <label for="photos">photos : </label>
+
+                            <input id="file" name="avatar" type="file" accept = "jpef, .png, .jpg" 
+                            onChange={(e)=>{
+                                    e.preventDefault();
+                                    const reader = new FileReader();
+                                    const file = e.target.files[0];
+                                    console.log("reader",reader)
+                                    console.log("file", file)
+                                    if (reader !== undefined && file !== undefined) {
+                                        reader.onloadend=() =>{
+                            
+                                            console.log(reader.result);
+                                             setPhotos(prevState => {
+                                                return [...prevState, {image_data:reader.result}]
+                                             });
+                                            console.log("I am here");
+                                        }
+                                        reader.readAsDataURL(file);
+                                    }
+                                
+                                  }} /><br/>
     
                     <label for="thumbnail">thumbnail : </label>
                     <input  id="thumbnail" name="thumbnail" type="text" value= {thumbnail}
