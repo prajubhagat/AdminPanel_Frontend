@@ -23,7 +23,7 @@ const PhotoList = () => {
     return (
         <>
             <h1>I am Photos List</h1>
-            <Link to="/new-photo">New Photos</Link>
+            <Link to="/new-photos">New Photos</Link>
             {/* use this styles for responsive table */}
             
             <Table striped bordered hover variant="dark" responsive>

@@ -13,7 +13,7 @@ const NewPhoto = () => {
   
     return (
       <>
-        <h1>I am new user</h1>
+        <h1>I am new photos</h1>
         <form
           onSubmit={async (event) => {
             event.preventDefault();
